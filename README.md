@@ -4,7 +4,7 @@ Aplicação para extrair informaçõs de logs de um ecossistema de microsserviç
 
 ## Arquitetura do projeto
 
-![Architecture](assets/microsservices-logs-management-architecture.png?raw=true "Title")
+![Project Architecture](assets/microsservices-logs-management-architecture.png "Project Architecture")
 
 O ecossistema de microserviços do online boutique foi hospedado em um serviço de gerenciamento de kubernets no google cloud (GKE).
 
