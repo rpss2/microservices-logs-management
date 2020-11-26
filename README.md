@@ -8,3 +8,5 @@ O ecossistema de microserviços do online boutique foi hospedado em um serviço 
 
 Dentro do cluster criado, foi incluído um pod do kubectl, que é uma aplicação responsável por ler o terminal de outputs (stderr) das outras aplicações do cluster.
 Dessa forma, todos os logs gerados pelos componentes da arquitetura são capturados.
+
+![Architecture](assets/microsservices-logs-management-architecture.png?raw=true "Title")
