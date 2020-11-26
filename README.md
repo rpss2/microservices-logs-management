@@ -4,9 +4,14 @@ Aplicação para extrair informaçõs de logs de um ecossistema de microsserviç
 
 ## Arquitetura do projeto
 
+![Architecture](assets/microsservices-logs-management-architecture.png?raw=true "Title")
+
 O ecossistema de microserviços do online boutique foi hospedado em um serviço de gerenciamento de kubernets no google cloud (GKE).
 
-Dentro do cluster criado, foi incluído um pod do kubectl, que é uma aplicação responsável por ler o terminal de outputs (stderr) das outras aplicações do cluster.
-Dessa forma, todos os logs gerados pelos componentes da arquitetura são capturados.
+Dentro do cluster criado, foram incluídos dois outros pods, o Elastic Search e o Filebeat. Este último é uma aplicação responsável por ler o terminal de outputs (stderr) das outras aplicações do cluster e enviar para o Elastic Search.
 
-![Architecture](assets/microsservices-logs-management-architecture.png?raw=true "Title")
+Foram criados ainda dois serviços node:
+
+- O Search Service é responsável por buscar logs específicos de um determinado microsserviço do online boutique e estruturar suas informações em formato json.
+
+- O Payment Analyser é o serviço que se comunica com o Search Service, obtém logs estruturados do serviço de pagamento e gera uma planilha de informações que será inputada no kibana, onde encontram-se métricas, tais como: quantidade e tipo de moedas transacionadas e quantidade de compras realizadas na aplicação.
