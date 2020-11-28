@@ -1,5 +1,5 @@
 {
-  "name": "payment_analyzer",
+  "name": "logs_analyzer",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
