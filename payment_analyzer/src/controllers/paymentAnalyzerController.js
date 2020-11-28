@@ -2,9 +2,9 @@ const axios = require('axios')
 const fs = require('fs')
 const createCsvWriter = require('csv-writer').createObjectCsvWriter
 const { v4: uuidv4 } = require('uuid')
+const {Cashify} = require('cashify')
 
 const Payment = require('../models/Payment')
-const Report = require('../models/Report')
 
 module.exports = {
     async analyzer(req, res) {
@@ -16,12 +16,27 @@ module.exports = {
         get_payment_log_data(from, size, (err, paymentData) => {
             if(err) return res.status(502).json(err)
             payment_data = parse_logs_data(paymentData)
-            // currency_payment = analyzer_items(payment_data)
-            // analyzed_data = generate_analyzed_payment_data(currency_payment)
+            payment_data = currency_convert(payment_data)
             write_csv(payment_data)
             return res.status(200).json(payment_data)
         })
     }
+}
+
+function currency_convert(data) {
+    const rates = {
+        CAD: 1.30,
+        EUR: 0.84,
+        JPY: 104.07,
+        USD: 1.00
+    }
+    const cashify = new Cashify({base: 'USD', rates})
+    
+    return data.map(transaction => {
+        const result = cashify.convert(transaction.amount, {from: transaction.currency, to: 'USD'})
+        return new Payment(result.toFixed(2), transaction.currency)
+    })
+    
 }
 
 function write_csv(data) {
@@ -37,36 +52,6 @@ function write_csv(data) {
     .then(() => {
         console.log('...Done');
     })
-}
-
-// function generate_analyzed_payment_data(currency_payment) {
-//     analyzed_data = []
-//     currency_payment.forEach((value, key) => {
-//         const total = sum_values_from_list(value)
-//         const average = parseFloat((total / value.length).toFixed(2))
-//         analyzed_data.push(
-//             new Report(key, total, average)
-//         )
-//     })
-//     return analyzed_data
-// }
-
-function sum_values_from_list(list) {
-    return list.reduce((acc, value) => {
-        return acc + value
-    }, 0)
-}
-
-function analyzer_items(paymentItems) {
-    const map = new Map()
-    paymentItems.forEach(pay => {
-        const key = pay.currency
-        const collection = map.get(key)
-        const value = parseFloat(pay.amount)
-        if(!collection) map.set(key, [value])
-        else collection.push(value)
-    })
-    return map
 }
 
 function get_payment_log_data(from, size, callback) {
