@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 
 app.get('/health', function (req, res) {
-    res.status(200).json({message: 'Payment Analyzer Service OK!'})
+    res.status(200).json({message: 'Logs Analyzer Service OK!'})
 })
 
 app.use('/', routes)

@@ -1,5 +1,4 @@
 const axios = require('axios')
-const fs = require('fs')
 const createCsvWriter = require('csv-writer').createObjectCsvWriter
 const { v4: uuidv4 } = require('uuid')
 const {Cashify} = require('cashify')
@@ -50,7 +49,7 @@ function write_csv(data) {
 
     csvWriter.writeRecords(data)
     .then(() => {
-        console.log('...Done');
+        console.log('...Done')
     })
 }
 

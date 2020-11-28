@@ -1,8 +1,8 @@
 const express = require('express')
 const routes = express()
 
-const paymentAnalyser = require('./paymentAnalyser')
+const logsAnalyser = require('./logsAnalyser')
 
-routes.use('/api', paymentAnalyser)
+routes.use('/api', logsAnalyser)
 
 module.exports = routes
