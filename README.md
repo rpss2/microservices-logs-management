@@ -18,6 +18,25 @@ Foram criados ainda dois serviços node:
 
 ## Tutorial de instalação
 
+*\*Indicado para usuários de distribuições linux*
+
 **Requisitos**
-- [Docker]()
+- [Docker](https://www.docker.com/products/docker-desktop)
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [Skaffold](https://skaffold.dev/docs/install/)
+
+1. Inicie o cluster kubernets com o minikube:
+
+`minikube start --cpus=4 --memory 4096 --disk-size 32g`
+
+*\*Esecificações de cpu e memória requeridas pelo Online Boutique*
+
+2. Clone o repositório do Online Boutique:
+`git clone https://github.com/GoogleCloudPlatform/microservices-demo.git`
+
+`cd microservices-demo`
+
+2. Dentro da pasta da aplicação execute o comando para incluir todos os pods no cluster:
+
+
