@@ -33,11 +33,12 @@ Foram criados ainda dois serviços node:
 *\*Esecificações de cpu e memória requeridas pelo Online Boutique*
 
 2. Clone o repositório do Online Boutique:
+
 `git clone https://github.com/GoogleCloudPlatform/microservices-demo.git`
 
 `cd microservices-demo`
 
-2. Dentro da pasta da aplicação execute o comando para incluir todos os pods no cluster:
+3. Dentro da pasta da aplicação execute o comando para incluir todos os pods no cluster:
 
 `skaffold run` (20 min aproximadamente :sweat_smile:)
 
