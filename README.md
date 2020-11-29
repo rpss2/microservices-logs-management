@@ -18,6 +18,8 @@ Foram criados ainda dois serviços node:
 
 ## Tutorial de instalação
 
+### Setup do Online Boutique
+
 *\*Indicado para usuários de distribuições linux*
 
 **Requisitos**
@@ -38,8 +40,20 @@ Foram criados ainda dois serviços node:
 
 `cd microservices-demo`
 
-3. Dentro da pasta da aplicação execute o comando para incluir todos os pods no cluster:
+3. Desabilitar cofigurações relativas ao ambiente Google Cloud.
+
+    - Acesse a pasta de kubernetes-manifests:
+
+        `cd kubernetes-manifests`
+
+    - Edite o arquivo recommendationservice.yaml e remova os comentários dentro do nó `env`
+
+        ![Recommendations Env](assets/recommendationservice-env.png "Recommendation Service Env")
+
+4. Execute o ecossistema de serviços através do skaffold
 
 `skaffold run` (20 min aproximadamente :sweat_smile:)
+
+
 
 
