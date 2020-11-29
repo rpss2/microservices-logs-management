@@ -1,6 +1,6 @@
 # Microsservices Logs Management
 
-Aplicação para extrair informaçõs de logs de um ecossistema de microsserviços open-source denominado [online boutique](https://github.com/GoogleCloudPlatform/microservices-demo). O projeto visa o desenvolvimento de competencias técnicas relacionadas ao gerenciamento de logs em aplicações distribuídas, bem como estimular a criatividade na extração de informações a partir de dados não estruturados com o objetivo de obter insights de negócio.
+Aplicação para extrair informaçõs de logs de um ecossistema de microsserviços open-source denominado [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo), desenvolvido pelo Google Cloud. O projeto visa o desenvolvimento de competencias técnicas relacionadas ao gerenciamento de logs em aplicações distribuídas, bem como estimular a criatividade na extração de informações a partir de dados não estruturados com o objetivo de obter insights de negócio.
 
 ## Arquitetura do projeto
 
@@ -38,5 +38,7 @@ Foram criados ainda dois serviços node:
 `cd microservices-demo`
 
 2. Dentro da pasta da aplicação execute o comando para incluir todos os pods no cluster:
+
+`skaffold run` (20 min aproximadamente :sweat_smile:)
 
 
