@@ -4,6 +4,8 @@ const { v4: uuidv4 } = require('uuid')
 
 const CartItem = require('../models/CartItem')
 
+const search_service_host = process.env.SEARCH_SERVICE_HOST
+
 module.exports = {
     async analyzer(req, res) {
         const {
@@ -36,7 +38,7 @@ function write_csv(data) {
 }
 
 function get_cart_log_data(from, size, callback) {
-    axios.get(`http://localhost:5000/api/search/cart?from=${from}&size=${size}`)
+    axios.get(`${search_service_host}/api/search/cart?from=${from}&size=${size}`)
     .then(data => {
         callback(null, data.data)
     })

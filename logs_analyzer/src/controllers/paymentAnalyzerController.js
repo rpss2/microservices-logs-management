@@ -5,6 +5,8 @@ const {Cashify} = require('cashify')
 
 const Payment = require('../models/Payment')
 
+const search_service_host = process.env.SEARCH_SERVICE_HOST
+
 module.exports = {
     async analyzer(req, res) {
         const {
@@ -54,7 +56,7 @@ function write_csv(data) {
 }
 
 function get_payment_log_data(from, size, callback) {
-    axios.get(`http://localhost:5000/api/search/payment?from=${from}&size=${size}`)
+    axios.get(`${search_service_host}/api/search/payment?from=${from}&size=${size}`)
     .then(data => {
         callback(null, data.data)
     })

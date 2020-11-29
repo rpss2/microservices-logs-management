@@ -1,0 +1,25 @@
+version: "3.5"
+services:
+  search:
+    build: ./search_service
+    container_name: search_service
+    restart: always
+    environment:
+      NODE_ENV: "dev"
+      ELASTIC_SEARCH_URL: http://host.docker.internal:9200
+    volumes:
+      - ./search_service:/usr/src/app
+    ports:
+        - '5000:5000'
+
+  analyzer:
+    build: ./logs_analyzer
+    container_name: logs_analyzer_service
+    restart: always
+    environment:
+      NODE_ENV: "dev"
+      SEARCH_SERVICE_HOST: http://search:5000
+    volumes:
+      - ./logs_analyzer:/usr/src/app
+    ports:
+        - '4000:4000'

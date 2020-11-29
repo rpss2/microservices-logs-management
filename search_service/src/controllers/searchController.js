@@ -4,6 +4,8 @@ const esb = require('elastic-builder')
 const Payment = require('../models/Payment')
 const CartItem = require('../models/CartItem')
 
+const elastic_search_url = process.env.ELASTIC_SEARCH_URL
+
 module.exports = {
     async getPaymentData(req, res) {
         const {
@@ -47,7 +49,7 @@ module.exports = {
 }
 
 function start_es_client() {
-    return new Client({ node: 'http://localhost:9200' })
+    return new Client({ node: elastic_search_url })
 }
 
 function generate_query(from, size) {
